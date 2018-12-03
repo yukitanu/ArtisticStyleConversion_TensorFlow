@@ -10,7 +10,7 @@ Python ver.3.5\
 TensorFlow ver.1.11.0\
 numpy ver.1.15.4\
 scipy ver.1.1.0
-#####Note: This is my environment. Some other environments maybe work.
+##### Note: This is my environment. Some other environments maybe work.
 
 ## Need Download
 This style conversion uses VGG-19 Network.\
