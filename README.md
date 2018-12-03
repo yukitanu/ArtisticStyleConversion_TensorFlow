@@ -1,8 +1,7 @@
 # ArtisticStyleConversion_TensorFlow
 
 Image style conversion by\
-"Image style transfer using convolutional neural networks"\
-Gatys, Leon A., Alexander S. Ecker, and Matthias Bethge.\
+Gatys, Leon A., Alexander S. Ecker, and Matthias Bethge, "Image style transfer using convolutional neural networks"\
 https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Gatys_Image_Style_Transfer_CVPR_2016_paper.html
 
 ## Need Packages
