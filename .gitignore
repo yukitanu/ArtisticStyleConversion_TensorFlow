@@ -1,3 +1,4 @@
+.idea
 __pycache__
 models/imagenet-vgg-verydeep-19.mat
 results

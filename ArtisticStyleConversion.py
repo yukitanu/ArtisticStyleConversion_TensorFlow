@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 import scipy.misc
 import os
-from model import vgg19;
+from model import vgg19_pretrained
 
 CONTENT_IMG = 'images/eiffel.jpg'
 STYLE_IMG = 'images/starrynight.jpg'
@@ -17,9 +17,9 @@ MEAN_VALUES = np.array([123, 117, 104]).reshape((1, 1, 1, 3))
 
 
 def build_content_loss(p, x):
-    M = p.shape[1]*p.shape[2]
+    M = p.shape[1] * p.shape[2]
     N = p.shape[3]
-    loss = (1. / (2 * N ** 0.5 * M ** 0.5 )) * tf.reduce_sum(tf.pow((x - p),2))
+    loss = (1. / (2 * N ** 0.5 * M ** 0.5)) * tf.reduce_sum(tf.pow((x - p), 2))
     return loss
 
 
@@ -59,7 +59,8 @@ def write_image(path, image):
     scipy.misc.imsave(path, image)
 
 
-net = vgg19(height, width)
+#net = vgg19(height, width)
+net = vgg19_pretrained(height, width)
 noise_img = np.random.uniform(-20, 20, (1, height, width, 3)).astype('float32')
 content_img = read_image(CONTENT_IMG)
 style_img = read_image(STYLE_IMG)
@@ -70,16 +71,16 @@ sess.run(init)
 
 INIT_NOISE_RATIO = 0.7
 STYLE_STRENGTH = 1000
-ITERATION = 5000
+ITERATION = 4000
 
 CONTENT_LAYERS =[('conv4_2',1.)]
 STYLE_LAYERS=[('conv1_1',1.),('conv2_1',1.),('conv3_1',1.),('conv4_1',1.),('conv5_1',1.)]
 
 sess.run([net['input'].assign(content_img)])
-cost_content = sum(map(lambda l : l[1] * build_content_loss(sess.run(net[l[0]]), net[l[0]]), CONTENT_LAYERS))
+cost_content = sum(map(lambda l: l[1] * build_content_loss(sess.run(net[l[0]]), net[l[0]]), CONTENT_LAYERS))
 
 sess.run([net['input'].assign(style_img)])
-cost_style = sum(map(lambda l : l[1] * build_style_loss(sess.run(net[l[0]]), net[l[0]]), STYLE_LAYERS))
+cost_style = sum(map(lambda l: l[1] * build_style_loss(sess.run(net[l[0]]), net[l[0]]), STYLE_LAYERS))
 
 cost_total = cost_content + STYLE_STRENGTH * cost_style
 optimizer = tf.train.AdamOptimizer(2.0)

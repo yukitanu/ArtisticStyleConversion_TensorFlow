@@ -21,7 +21,7 @@ def get_weight_bias(vgg_layers, i):
     return weights, bias
 
 
-def vgg19(input_height, input_width):
+def vgg19_pretrained(input_height, input_width):
     net = {}
     vgg_rawnet = scipy.io.loadmat(VGG_MODEL)
     vgg_layers = vgg_rawnet['layers'][0]
