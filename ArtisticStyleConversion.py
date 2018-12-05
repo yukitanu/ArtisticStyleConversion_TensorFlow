@@ -78,7 +78,7 @@ def main():
     if len(sys.argv) < 5:
         process_output = False
     else:
-        process_output = bool(sys.argv[4])
+        process_output = bool(int(sys.argv[4]))
 
     print('Content: {}, Style: {}'.format(content_img_path, style_img_path))
     print('Results will be saved as {}'.format(output_dir + '/' + output_img_path))
