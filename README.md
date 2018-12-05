@@ -18,7 +18,7 @@ cuDNN v7.4.1
 
 ## Model
 This style conversion uses VGG-19 Network.\
-Go to http://www.vlfeat.org/matconvnet/pretrained/ and download __imagenet-vgg-verydeep-19__.\
+Go to http://www.vlfeat.org/matconvnet/pretrained/ and download __imagenet-vgg-verydeep-19.mat__\
 Put it as below
 ```buildoutcfg
 ArtisticStyleConversion/
