@@ -25,7 +25,7 @@ def vgg19_pretrained(input_shape):
     net = {}
     vgg_rawnet = scipy.io.loadmat(VGG_MODEL)
     vgg_layers = vgg_rawnet['layers'][0]
-    net['input']   = tf.Variable(np.zeros((1, input_shape[0], input_shape[1], 3)).astype('float32'))
+    net['input']   = tf.Variable(np.zeros((1, input_shape[0], input_shape[1], 3)).astype(np.float32))
     net['conv1_1'] = build_net('conv', net['input']  , get_weight_bias(vgg_layers, 0))
     net['conv1_2'] = build_net('conv', net['conv1_1'], get_weight_bias(vgg_layers, 2))
     net['pool1']   = build_net('pool', net['conv1_2'])
