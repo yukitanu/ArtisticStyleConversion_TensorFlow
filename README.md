@@ -37,7 +37,7 @@ python ArtisticStyleCoversion.py [content-image-format] [style-image-format] [re
 * __\[content-image-format\] : path of content-image__
 * __\[style-image-format\]&emsp;&nbsp;&nbsp;: path of style-image__
 * __\[result-image-format\]&emsp;&thinsp;: result-image name (default: result.png)__
-* __\[process-output\]&emsp;&emsp;&emsp;&thinsp;: bool of process image output (default: 0)__
+* __\[process-output\]&emsp;&emsp;&emsp;&thinsp;: boolean of process image output (default: 0)__
 
 ## Example
 ```buildoutcfg
