@@ -1,11 +1,13 @@
-import tensorflow as tf
-import numpy as np
-from PIL import Image
-import imageio
-import time
-import os
 import argparse
-from model import vgg19_pretrained
+import time
+import imageio
+from PIL import Image
+import numpy as np
+import os
+
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "1"
+import tensorflow as tf  # noqa: E402
+from model import vgg19_pretrained  # noqa: E402
 
 # style conversion parameters
 INIT_NOISE_RATIO = 0.3
@@ -133,8 +135,8 @@ def main():
         if i % 100 == 0:
             result_img = sess.run(net['input'])
             elapsed = time.perf_counter() - start
-            print('ITERATION: ', i, ', ', sess.run(
-                cost_total), ', elapsed: ', elapsed, '[sec]')
+            print("{:5d}it, cost: {:.3e}, elapsed: {:.3f}[sec]".format(
+                i, sess.run(cost_total), elapsed))
             if process_output:
                 write_image(os.path.join(output_dir, '%s.png' %
                                          (str(i).zfill(4))), result_img)
