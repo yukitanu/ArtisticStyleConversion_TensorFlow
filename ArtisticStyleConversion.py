@@ -69,10 +69,14 @@ def write_image(path, image):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("content_image", type=str)
-    parser.add_argument("style_image", type=str)
-    parser.add_argument("--output", type=str, default="result.png")
-    parser.add_argument("--output_process", type=bool, default=False)
+    parser.add_argument("content_image", type=str,
+                        help="Path to content image")
+    parser.add_argument("style_image", type=str,
+                        help="Path to style image")
+    parser.add_argument("--output", type=str, default="result.png",
+                        help="Path to result image")
+    parser.add_argument("--output_process", type=bool, default=False,
+                        help="Whether to save the intermediate images")
     args = parser.parse_args()
 
     content_img_path = args.content_image
